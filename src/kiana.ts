@@ -14,8 +14,8 @@ class Unit implements IUnit {
   hit: boolean
   constructor(idiom: string) {
     this.value = idiom
-    this.left = idiom.at(0) || ''
-    this.right = idiom.at(-1) || ''
+    this.left = idiom.charAt(0) || ''
+    this.right = idiom.slice(-1) || ''
     this.hit = false
   }
 }
