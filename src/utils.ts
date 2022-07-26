@@ -1,14 +1,17 @@
 import fs from 'fs'
 import path from 'path'
 
+let cache: string[] | null = null
 export function getIdiomsList() {
-  const targetPath = path.join(__dirname, '../resources/idioms.txt')
-  const idioms = fs.readFileSync(targetPath, 'utf8').split('\n').map(i => i.trim()).filter(Boolean)
-  return Array.from(new Set(idioms)).sort()
+  if (!cache) {
+    const targetPath = path.join(__dirname, '../resources/idioms.txt')
+    const idioms = fs.readFileSync(targetPath, 'utf8').split('\n').map(i => i.trim()).filter(Boolean)
+    cache = Array.from(new Set(idioms)).sort()
+  }
+  return cache
 }
 
-// TODO 校验成语
 export function validateIdiom(key: string, text: string) {
-  const reg = /^[\u4E00-\u9FA5]{4}$/g
-  return text.startsWith(key) && reg.test(text)
+  const isIdiom = getIdiomsList().includes(text)
+  return text.startsWith(key) && isIdiom
 }
