@@ -2,7 +2,7 @@
   "publisher": "Wuzh994",
   "name": "idiom-solitaire",
   "displayName": "成语接龙",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "packageManager": "pnpm@7.5.1",
   "description": "老少皆宜的民间文化娱乐活动",
